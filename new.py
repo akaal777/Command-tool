@@ -340,6 +340,114 @@ def open_new_window():
     separator_linux_commands_new_bottom = tk.Frame(new_window, height=1, bg='black')
     separator_linux_commands_new_bottom.pack(fill='x', padx=5, pady=(5, 5))
 
+    # Add a black line separator before the Screen Recorder command
+
+    # Label for the Screen Recorder command
+    # screen_recorder_new_label = tk.Label(
+    #     new_window,
+    #     text="Screen Recorder Commands:",
+    #     font=("Consolas", 10),
+    #     anchor='w',
+    #     padx=5
+    # )
+    # screen_recorder_new_label.pack(pady=(10, 5))
+
+    # Create a frame for the Screen Recorder commands
+    # screen_recorder_frame_new = tk.Frame(new_window)
+    # screen_recorder_frame_new.pack(fill='x', pady=(10, 5))
+
+    # Go button for starting screen recording
+    # start_screen_recorder_button_new = tk.Button(
+    #     screen_recorder_frame_new,
+    #     text="windows Screen Recording",
+    #     command=lambda: pyautogui.hotkey('win', 'shift', 's'),  # Simulate the hotkeys for screen recording
+    #     width=15,  # Adjusted width
+    #     height=1,
+    #     bg='#4CAF50',
+    #     fg='white',
+    #     font=("Arial", 9, "bold")
+    # )
+    # start_screen_recorder_button_new.pack(side='left', padx=(0, 5))
+
+    # Go button for stopping screen recording
+    # stop_screen_recorder_button_new = tk.Button(
+    #     screen_recorder_frame_new,
+    #     text="game  Screen Recording",
+    #     command=lambda: pyautogui.hotkey('win', 'alt', 'r'),  # Simulate the hotkeys for stopping recording
+    #     width=15,  # Adjusted width
+    #     height=1,
+    #     bg='#4CAF50',
+    #     fg='white',
+    #     font=("Arial", 9, "bold")
+    # )
+    # stop_screen_recorder_button_new.pack(side='left', padx=(5, 0))  # Position the stop button next to the start button
+
+    # Go button for checking game screen recording
+    # check_game_screen_recorder_button = tk.Button(
+    #     screen_recorder_frame_new,
+    #     text="Check Game Screen Recording",
+    #     command=lambda: pyautogui.hotkey('win', 'g'),  # Simulate the hotkeys for checking game recording
+    #     width=15,  # Adjusted width
+    #     height=1,
+    #     bg='#4CAF50',
+    #     fg='white',
+    #     font=("Arial", 9, "bold")
+    # )
+    # check_game_screen_recorder_button.pack(side='left', padx=(5, 0))  # Position the check button next to the others
+
+    # Add a black line separator after the Screen Recorder command
+    # separator_screen_recorder_new_bottom = tk.Frame(new_window, height=1, bg='black')
+    # separator_screen_recorder_new_bottom.pack(fill='x', padx=5, pady=(5, 5))
+
+    # Add a black line separator before the GOD Mode command
+
+    # Label for the GOD Mode command
+    god_mode_label = tk.Label(
+        new_window,
+        text="GOD Mode:",
+        font=("Consolas", 10),
+        anchor='w',
+        padx=5
+    )
+    god_mode_label.pack(pady=(10, 5))
+
+    # Additional information for the GOD Mode command
+    additional_info_label = tk.Label(
+        new_window,
+        text="First, create a new folder. Second, rename this folder with this command below:",
+        font=("Consolas", 9),
+        anchor='w',
+        padx=5
+    )
+    additional_info_label.pack(pady=(5, 5))
+
+    # Create a frame for the GOD Mode command input
+    god_mode_frame = tk.Frame(new_window)
+    god_mode_frame.pack(fill='x', pady=(5, 5))
+
+    # Input field for the GOD Mode command (non-editable)
+    god_mode_entry = tk.Entry(god_mode_frame, font=("Consolas", 10), width=40)
+    god_mode_entry.insert(0, "GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}")  # Command text
+    god_mode_entry.config(state='readonly')  # Make it non-editable
+    god_mode_entry.pack(side='left', padx=(0, 5))  # Position the input box on the left side
+
+    # Copy button for the GOD Mode command
+    copy_god_mode_button = tk.Button(
+        god_mode_frame,
+        text="Copy Command",
+        command=lambda: root.clipboard_clear() or root.clipboard_append(god_mode_entry.get()),
+        width=15,
+        height=1,
+        bg='#4CAF50',
+        fg='white',
+        font=("Arial", 9, "bold")
+    )
+    copy_god_mode_button.pack(side='right')  # Position the copy button on the right side
+
+    # Add a black line separator after the GOD Mode command
+    separator_god_mode_bottom = tk.Frame(new_window, height=1, bg='black')
+    separator_god_mode_bottom.pack(fill='x', padx=5, pady=(5, 5))
+
 def open_linux_commands_window():
     linux_window = tk.Toplevel(root)
     linux_window.title("Linux Commands")
@@ -360,7 +468,7 @@ def open_linux_commands_window():
     go_button.pack(pady=(10, 5))
 
     line = tk.Frame(linux_window, height=2, bg='black')
-    line.pack(fill='x', pady=(5, 10))
+    line.pack(fill='x', pady=(5, 10))# Simulate the hotkeys for screen recording
 
 # Initialize the main window
 root = tk.Tk()
@@ -399,14 +507,14 @@ commands_info = [
 all_buttons = []
 
 # Create a frame for each command
-for display_name, command in commands_info:
+for index, (display_name, command) in enumerate(commands_info, start=1):  # Added index for numbering
     cmd_frame = tk.Frame(frame)
     cmd_frame.pack(fill='x', pady=(5, 5))  # Added vertical padding for equal gaps
     
-    # Command name label (left-aligned)
+    # Command name label (left-aligned) with numbering
     label = tk.Label(
         cmd_frame,
-        text=display_name,
+        text=f"{index}. {display_name}",  # Added numbering in front of command name
         font=("Consolas", 10),
         anchor='w',
         bg='#f0f0f0',
