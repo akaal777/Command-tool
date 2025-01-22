@@ -228,18 +228,18 @@ def open_new_window():
     debloat_entry_1.config(state='readonly')  # Make it non-editable
     debloat_entry_1.pack(side='left', padx=(0, 5))
 
-    # Copy button for Debloat command 1
-    copy_debloat_button_1 = tk.Button(
+    # Go button for Debloat command 1
+    go_debloat_button_1 = tk.Button(
         debloat_frame_1,
-        text="Copy",
-        command=lambda: root.clipboard_clear() or root.clipboard_append(debloat_entry_1.get()),
+        text="Go",
+        command=lambda: run_command("powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command iwr -useb https://git.io/debloat|iex' -Verb RunAs\"", show_console=True),  # Run command in PowerShell admin mode
         width=8,
         height=1,
         bg='#4CAF50',
         fg='white',
         font=("Arial", 9, "bold")
     )
-    copy_debloat_button_1.pack(side='right')  # Position the copy button on the right side
+    go_debloat_button_1.pack(side='right')  # Position the Go button on the right side
 
     # Add a black line separator after Debloat command 1
     separator_debloat_1 = tk.Frame(new_window, height=1, bg='black')
@@ -255,18 +255,18 @@ def open_new_window():
     debloat_entry_2.config(state='readonly')  # Make it non-editable
     debloat_entry_2.pack(side='left', padx=(0, 5))
 
-    # Copy button for Debloat command 2
-    copy_debloat_button_2 = tk.Button(
+    # Go button for Debloat command 2
+    go_debloat_button_2 = tk.Button(
         debloat_frame_2,
-        text="Copy",
-        command=lambda: root.clipboard_clear() or root.clipboard_append(debloat_entry_2.get()),
+        text="Go",
+        command=lambda: run_command("powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command & ([scriptblock]::Create((irm \"https://debloat.raphi.re/\")))' -Verb RunAs\"", show_console=True),  # Run command in PowerShell admin mode
         width=8,
         height=1,
         bg='#4CAF50',
         fg='white',
         font=("Arial", 9, "bold")
     )
-    copy_debloat_button_2.pack(side='right')  # Position the copy button on the right side
+    go_debloat_button_2.pack(side='right')  # Position the Go button on the right side
 
     # Add a black line separator after Debloat command 2
     separator_debloat_2 = tk.Frame(new_window, height=1, bg='black')
@@ -292,18 +292,18 @@ def open_new_window():
     wsl_install_entry.config(state='readonly')  # Make it non-editable
     wsl_install_entry.pack(side='left', padx=(0, 5))
 
-    # Copy button for the WSL Install command
-    copy_wsl_install_button = tk.Button(
+    # Go button for WSL Install command
+    go_wsl_install_button = tk.Button(
         wsl_install_frame,
-        text="Copy",
-        command=lambda: root.clipboard_clear() or root.clipboard_append(wsl_install_entry.get()),
+        text="Go",
+        command=lambda: run_command("powershell -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command wsl --install' -Verb RunAs\"", show_console=True),  # Run command in PowerShell admin mode
         width=8,
         height=1,
         bg='#4CAF50',
         fg='white',
         font=("Arial", 9, "bold")
     )
-    copy_wsl_install_button.pack(side='right')  # Position the copy button on the right side
+    go_wsl_install_button.pack(side='right')  # Position the Go button on the right side
 
     # Add a black line separator before the Linux Commands command
     separator_linux_commands_new = tk.Frame(new_window, height=1, bg='black')
@@ -340,66 +340,7 @@ def open_new_window():
     separator_linux_commands_new_bottom = tk.Frame(new_window, height=1, bg='black')
     separator_linux_commands_new_bottom.pack(fill='x', padx=5, pady=(5, 5))
 
-    # Add a black line separator before the Screen Recorder command
-
-    # Label for the Screen Recorder command
-    # screen_recorder_new_label = tk.Label(
-    #     new_window,
-    #     text="Screen Recorder Commands:",
-    #     font=("Consolas", 10),
-    #     anchor='w',
-    #     padx=5
-    # )
-    # screen_recorder_new_label.pack(pady=(10, 5))
-
-    # Create a frame for the Screen Recorder commands
-    # screen_recorder_frame_new = tk.Frame(new_window)
-    # screen_recorder_frame_new.pack(fill='x', pady=(10, 5))
-
-    # Go button for starting screen recording
-    # start_screen_recorder_button_new = tk.Button(
-    #     screen_recorder_frame_new,
-    #     text="windows Screen Recording",
-    #     command=lambda: pyautogui.hotkey('win', 'shift', 's'),  # Simulate the hotkeys for screen recording
-    #     width=15,  # Adjusted width
-    #     height=1,
-    #     bg='#4CAF50',
-    #     fg='white',
-    #     font=("Arial", 9, "bold")
-    # )
-    # start_screen_recorder_button_new.pack(side='left', padx=(0, 5))
-
-    # Go button for stopping screen recording
-    # stop_screen_recorder_button_new = tk.Button(
-    #     screen_recorder_frame_new,
-    #     text="game  Screen Recording",
-    #     command=lambda: pyautogui.hotkey('win', 'alt', 'r'),  # Simulate the hotkeys for stopping recording
-    #     width=15,  # Adjusted width
-    #     height=1,
-    #     bg='#4CAF50',
-    #     fg='white',
-    #     font=("Arial", 9, "bold")
-    # )
-    # stop_screen_recorder_button_new.pack(side='left', padx=(5, 0))  # Position the stop button next to the start button
-
-    # Go button for checking game screen recording
-    # check_game_screen_recorder_button = tk.Button(
-    #     screen_recorder_frame_new,
-    #     text="Check Game Screen Recording",
-    #     command=lambda: pyautogui.hotkey('win', 'g'),  # Simulate the hotkeys for checking game recording
-    #     width=15,  # Adjusted width
-    #     height=1,
-    #     bg='#4CAF50',
-    #     fg='white',
-    #     font=("Arial", 9, "bold")
-    # )
-    # check_game_screen_recorder_button.pack(side='left', padx=(5, 0))  # Position the check button next to the others
-
-    # Add a black line separator after the Screen Recorder command
-    # separator_screen_recorder_new_bottom = tk.Frame(new_window, height=1, bg='black')
-    # separator_screen_recorder_new_bottom.pack(fill='x', padx=5, pady=(5, 5))
-
-    # Add a black line separator before the GOD Mode command
+ 
 
     # Label for the GOD Mode command
     god_mode_label = tk.Label(
@@ -499,8 +440,6 @@ commands_info = [
     ("Windows Firewall", "firewall.cpl"),
     ("Temporary Files", "explorer %temp%"),
     ("Performance Options", "SystemPropertiesPerformance.exe"),
-    # Removed Debloat Command
-    # Removed Shutdown, Restart, Log Off
 ]
 
 # Create buttons list to store all buttons
